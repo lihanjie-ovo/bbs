@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>注册成功</title>
+</head>
+
+<body>
+{{.title}} , {{.message}}
+<h1>
+    将在 <span id="mes">1</span> 秒钟...后返回登录页面！
+</h1>
+</body>
+
+
+<script language="javascript" type="text/javascript">
+    var i = 1;
+    var intervalid;
+    intervalid = setInterval("fun()", 1000);
+
+    function fun() {
+        if (i == 0) {
+            window.location.href = "/user/login";
+            clearInterval(intervalid);
+        }
+        document.getElementById("mes").innerHTML = i;
+        i--;
+    }
+</script>
+
+</html>

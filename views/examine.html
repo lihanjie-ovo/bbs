@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查看回复内容</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            margin: 15px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 760px;
+            height: 250px;
+        }
+
+        .box .left {
+            text-align: center;
+            float: left;
+            margin-right: 30px;
+            border-right: 1px solid #ccc;
+            padding: 10px;
+            height: 200px;
+        }
+
+        .box .right {
+            float: left;
+            width: 520px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 12px;
+            color: green;
+            font-weight: bold;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        span {
+            color: red;
+            font-size: 20px;
+        }
+
+        .span {
+            margin-left: 50px;
+            margin-bottom: 12px;
+            color: hotpink;
+            font-size: 30px
+        }
+    </style>
+</head>
+<body>
+<form action="/examine" method="post">
+    {{range .ex}}
+        <div class="box">
+            <div class="left">
+                <img src="/static/img/{{.User.Avtar}}.jpg" alt="头像" class="img-circle">
+                <h4> 回复人: <span>{{.User.Username}} </span></h4>
+
+            </div>
+            <div class="right">
+                <p style="border-bottom: 1px dashed #ccc;font-size:12px;color:#000;padding: 5px;">*&nbsp;回复时间：{{.Time}}
+                <h4>问题:<span class="span">{{.Ask.Title}}</span></h4>
+                <p>回复:<span class="span">{{.Content}}</span></p>
+                </p>
+                <br>
+            </div>
+        </div>
+    {{end}}
+</form>
+</body>
+</html>

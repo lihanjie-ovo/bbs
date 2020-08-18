@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"/>
+    <script src="../static/js/jquery.min.js" type="text/javascript" charset="UTF-8"></script>
+    <style>
+        img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .div {
+            margin-left: 274px;
+            margin-top: 84px;
+        }
+
+        #b {
+            margin-left: -519px;
+            margin-top: 74px;
+        }
+
+        #c {
+            margin-left: -519px;
+            margin-top: 155px;
+        }
+
+        button {
+            margin-top: -169px;
+            margin-left: 80px;
+        }
+
+        .xx {
+            margin-left: 164px;
+            margin-top: -229px;
+        }
+
+        h1 {
+            color: #9d9d9d;
+        }
+    </style>
+</head>
+<body>
+<div class="div">
+    <h1>这个是注册页面</h1>
+    <br>
+    <br>
+    <form action="/" method="post" onsubmit="javascript:return a()">
+        {{/* 用户名*/}}
+        <div class="form-group has-success has-feedback col-xs-5" id="a">
+            <label class="control-label">用户名称</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="请输入你的账号！">
+        </div>
+        {{/*密码*/}}
+        <div class="form-group has-success has-feedback col-xs-5" id="b">
+            <label class="control-label">用户密码</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="请输入你的密码！">
+        </div>
+
+        {{/*真实姓名*/}}
+        <div class="form-group has-success has-feedback col-xs-5" id="c">
+            <label class="control-label">真实姓名</label>
+            <input type="text" class="form-control" id="realname" name="realname" placeholder="请输入你的真实姓名！">
+        </div>
+        用户头像:<select name="avtar" id="avtar" onchange="changeAvtar()" id="d">
+            <option value="1">头像1</option>
+            <option value="2">头像2</option>
+            <option value="3">头像3</option>
+        </select>
+        <p>
+            <img src="/static/img/1.jpg" alt="头像" class="img-circle" id="avtarImg">
+        <p>
+            <br>
+            <button type="submit" class="btn btn-info">注册</button>
+    </form>
+
+    <form action="/user/login" method="get">
+        <button type="submit" class="btn btn-info xx" onclick=""> 登录页面</button>
+    </form>
+
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+    function changeAvtar() {
+        //获取下拉框的value
+        imgId = $("#avtar").val()
+        avtarImg = "/static/img/" + imgId + ".jpg"
+        $("#avtarImg").attr("src", avtarImg)
+    }
+
+    function a() {
+        // 获取表单的值  $("#表单的id名称").val()
+        var usernameVal = $("#username").val() // username
+        var password = $("#password").val() // passowrd
+
+        if (usernameVal == "") {
+            alert("用户名不能为空~~!")
+            return false
+        }
+        if (usernameVal.length < 4 || usernameVal > 20) {
+            alert("用户名字段的长度必须是4-20位~~!")
+            return false
+        }
+        if (password == "") {
+            alert("密码不能为空~~~!")
+            return false
+        }
+        if (password.length < 4 || password.length > 16) {
+            alert("密码字段必须是4-16为~~!")
+            return false
+        }
+        return true
+    }
+
+
+</script>
+</html>

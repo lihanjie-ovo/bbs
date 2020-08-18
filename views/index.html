@@ -1,0 +1,107 @@
+<html>
+<head>
+    <script src="../static/js/jquery.min.js" type="text/javascript" charset="UTF-8"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"/>
+    <style>
+        .div {
+            margin: 0px auto;
+            border: 1px solid #cccccc;
+            width: 500px;
+        }
+
+        .div p {
+            text-align: center;
+        }
+
+        p img {
+            width: 200px;
+            height: 200px;
+        }
+
+        a {
+            text-decoration: none;
+            color: red;
+        }
+
+        h2 {
+            color: red;
+            margin-left: 150px;
+        }
+
+        ul a {
+            color: #5bc0de;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="/index">个人中心</a></li>
+    <li role="presentation"><a href="/">注册</a></li>
+    <li role="presentation"><a href="/user/login">登录</a></li>
+    <li role="presentation"><a href="/">退出登录</a></li>
+    <li role="presentation"><a href="/discuss">论坛</a></li>
+    <li role="presentation"><a href="/alter">修改密码</a></li>
+    <li role="presentation"><a href="/add">提交问题</a></li>
+</ul>
+
+<div class="div" action="/index" method="post">
+
+    <p><img src="/static/img/{{.av}}.jpg" class="img-circle"></p>
+    <p style="color: dodgerblue;font-weight:bold;font-size: 30px;">{{.name}}</p>
+    <hr/>
+    <h2>发表问题列表</h2>
+
+    <p>
+        {{range .iss}}
+    <table class="table table-hover">
+        <tr>
+            <td>
+                标题:
+            </td>
+            <td>
+                {{.Title}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                内容:
+            </td>
+            <td>
+                {{.Content}}
+            </td>
+        </tr>
+    </table>
+    {{end}}
+    </p>
+
+
+    <h2>回复列表</h2>
+    <p>
+        {{range .rep}}
+<table class="table table-hover">
+    <tr>
+        <td>
+            问题标题:
+        </td>
+        <td>
+            {{.Ask.Title}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            回复内容:
+        </td>
+        <td>
+            {{.Content}}
+        </td>
+    </tr>
+</table>
+    {{end}}
+    </p>
+
+</div>
+</body>
+
+</html>

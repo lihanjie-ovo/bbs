@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../static/js/jquery.min.js" type="text/javascript" charset="UTF-8"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"/>
+    <title>留言版</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            margin: 15px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 760px;
+            height: 250px;
+        }
+
+        .box .left {
+            text-align: center;
+            float: left;
+            margin-right: 30px;
+            border-right: 1px solid #ccc;
+            padding: 10px;
+            height: 200px;
+        }
+
+        .box .right {
+            float: left;
+            width: 520px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 12px;
+            color: green;
+            font-weight: bold;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+       ul a{
+           color: #5bc0de;
+           font-size: 20px;
+       }
+    </style>
+</head>
+<body>
+
+
+
+<ul class="nav nav-tabs" id="o">
+    <li role="presentation" class="active"><a href="/index">个人中心</a></li>
+    <li role="presentation"><a href="/">注册</a></li>
+    <li role="presentation"><a href="/user/login">登录</a></li>
+    <li role="presentation"><a href="/">退出登录</a></li>
+    <li role="presentation"><a href="/alter">修改密码</a></li>
+    <li role="presentation"><a href="/add">提交问题</a></li>
+</ul>
+
+
+
+
+<h1>欢迎到论坛</h1>
+{{range .dcs}}
+    <div class="box">
+        <div class="left">
+            <img src="/static/img/{{.User.Avtar}}.jpg" alt="头像" class="img-circle">
+            <h4>{{.User.Username}} </h4>
+        </div>
+        <div class="right">
+            <p style="border-bottom: 1px dashed #ccc;font-size:12px;color:#000;padding: 5px;">*&nbsp;留言时间：{{.Time}}
+                &nbsp;
+                <a href="/reply?id={{.Id}}">回复</a>
+                <a href="/examine?id={{.Id}}">查看回复</a>
+                <a href="/del?id={{.Id}}">删除留言</a>
+            </p>
+            <p style="padding: 10px;">
+            <h4 style="margin-bottom: 12px;color: hotpink;font-size: 30px">{{.Title}}</h4>
+            <p>{{.Content}}</p>
+            </p>
+            <br>
+        </div>
+    </div>
+{{end}}
+</body>
+</html>
